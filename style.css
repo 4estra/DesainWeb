@@ -165,15 +165,21 @@ body {
 }
 
 .image-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+   display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
 }
 
 .image-container img {
-    width: calc(33.33% - 10px);
+    width: 95%; 
     height: 100%;
     object-fit: cover;
+    border-radius: 20px;
+}
+
+.kontak {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .kontak img {
@@ -300,3 +306,4 @@ body {
 .row img {
     filter: grayscale(90%);
 }
+
