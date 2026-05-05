@@ -307,3 +307,102 @@ body {
     filter: grayscale(90%);
 }
 
+.pesan {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.btn-pesan {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: red; 
+    color: white;
+    text-decoration: none; 
+    border-radius: 20px; 
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+.pesan a {
+    text-align: center;
+}
+
+.btn-pesan:hover {
+    background-color: white;
+    color: black;
+}
+
+ .booking-card 
+        {
+            margin-top: 60px;
+            background: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-card h2 {
+            margin-top: 0;
+            font-size: 24px;
+            text-align: center;
+            color: #222;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input,textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            box-sizing: border-box; /* Pastikan padding tidak merusak lebar */
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #222;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #444;
+        }
+
+        .pesanPage {
+            display: flex;
+            justify-content: center;
+        }

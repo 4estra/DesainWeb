@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Fotografi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pesanPage">
+    <div class="booking-card">
+        <h2>Book Your Session</h2>
+        
+
+        <form id="photographyForm">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required>
+            </div>
+
+            <div class="form-group">
+                <label for="alamat">Alamat Lokasi</label>
+                <textarea id="alamat" placeholder="Masukkan alamat lengkap" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="jasa">Pilihan Jasa</label>
+                <select id="jasa" required>
+                    <option value="" disabled selected>-- Pilih Paket Foto --</option>
+                    <option value="Foto Wisuda">Foto Wisuda</option>
+                    <option value="Foto Model">Foto Model</option>
+                    <option value="Foto Studio">Foto Studio</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tanggal">Tanggal Booking</label>
+                <input type="date" id="tanggal" required>
+            </div>
+
+
+            <button type="submit" class="submit-btn">Pesan Sekarang</button>
+        </form>
+
+
+    </div>
+</div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('photographyForm');
+
+            form.addEventListener('submit', function(e) {
+
+                e.preventDefault();
+
+                const namaValue = document.getElementById('nama').value;
+                const alamatValue = document.getElementById('alamat').value;
+                const jasaValue = document.getElementById('jasa').value;
+                const tanggalValue = document.getElementById('tanggal').value;
+
+   
+                const pesanKonfirmasi = 
+                    "--- RANGKUMAN PESANAN FOTOGRAFI ---\n\n" +
+                    "Nama Pelanggan : " + namaValue + "\n" +
+                    "Alamat Tujuan  : " + alamatValue + "\n" +
+                    "Jenis Layanan  : " + jasaValue + "\n" +
+                    "Tanggal Booking: " + tanggalValue + "\n\n" +
+                    "Pesanan Anda telah kami terima. Terima kasih!";
+                
+                alert(pesanKonfirmasi);
+                
+
+            });
+        });
+    </script>
+</body>
+</html>
