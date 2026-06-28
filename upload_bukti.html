@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Bukti Pembayaran - Lensa.Abad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pesanPage">
+        <div class="booking-card">
+            <h2>Bukti Pembayaran</h2>
+            <p style="text-align: center; font-size: 14px; color: #666; margin-bottom: 20px;">
+                Silakan upload foto bukti transfer kamu di sini.
+            </p>
+            
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="bukti">Pilih File (JPG/PNG)</label>
+                    <input type="file" id="bukti" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Kirim Bukti</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Bukti pembayaran berhasil diupload! Tim kami akan segera memverifikasi pesananmu.");
+            window.location.href = 'confirmation.html';
+        });
+    </script>
+</body>
+</html>
