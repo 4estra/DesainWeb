@@ -1,14 +1,12 @@
 <?php
-$host = "localhost"; // Nama host, default 'localhost'
-$user = "root"; // Username database Anda
-$password = ""; // Password database Anda
-$database = "desainweb"; // Nama database yang akan dihubungkan
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "desainweb";
 
-// Membuat koneksi
-$koneksi = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_connect($host, $user, $password, $database);
 
-// Memeriksa koneksi
-if (!$koneksi) {
+if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 echo "Koneksi ke database berhasil!";
