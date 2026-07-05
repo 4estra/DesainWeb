@@ -1,22 +1,23 @@
-<?php include 'koneksi.php';
+<?php
+include 'koneksi.php';
 $id_jasa = $_GET['id'];
 $jasa = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM jasa WHERE id = '$id_jasa'"));
 
 if (isset($_POST['pesan'])) {
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-    // Ganti email jadi no_telp
     $no_telp = mysqli_real_escape_string($conn, $_POST['no_telp']);
-    $total = $jasa['harga'];
+    $tgl_pengerjaan = $_POST['tgl_pengerjaan'];
+    $paket = $jasa['nama_jasa'];
+    $harga = $jasa['harga'];
 
-    // Update query INSERT-nya
-    mysqli_query($conn, "INSERT INTO pesanan (nama_customer, no_telp, jasa_id, total_bayar) VALUES ('$nama', '$no_telp', '$id_jasa', '$total')");
+    mysqli_query($conn, "INSERT INTO pesanan (nama_customer, no_telp, jasa_id, paket, harga, tgl_pengerjaan, status) VALUES ('$nama', '$no_telp', '$id_jasa', '$paket', '$harga', '$tgl_pengerjaan', 'Menunggu')");
     $id_transaksi = mysqli_insert_id($conn);
     header("Location: upload_bukti.php?id=$id_transaksi");
     exit();
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -27,26 +28,33 @@ if (isset($_POST['pesan'])) {
 </head>
 
 <body class="bg-black text-light">
-
     <div class="header">
         <img src="Images/LensaAbadTransparent2.png" alt="Logo">
         <ul class="navbar">
             <li><a href="index.html">Home</a></li>
             <li><a href="ourworks.html">Our Works</a></li>
-            <li><a href="jasa.php">Our Services</a></li>
-            <li><a href="kontak.html">Contact Us</a></li>
-            <li><a href="tentangkami.html">About Us</a></li>
-            <li><a href="review.php">Review</a></li>
-            <li><a href="faq.html">FaQ</a></li>
+            <li>
+                <a href="#">Services ▾</a>
+                <ul class="dropdown-menu-custom">
+                    <li><a href="jasa.php">Paket Foto</a></li>
+                    <li><a href="antrian.php">Cek Antrian</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About ▾</a>
+                <ul class="dropdown-menu-custom">
+                    <li><a href="tentangkami.html">About Us</a></li>
+                    <li><a href="kontak.html">Contact Us</a></li>
+                    <li><a href="review.php">Reviews</a></li>
+                    <li><a href="faq.html">FaQ</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
-
-    <div class="container py-5 mx-auto" style="max-width: 500px;">
+    <div class="py-5 mx-auto" style="max-width: 500px;">
         <a href="jasa.php" class="text-secondary text-decoration-none mb-3 d-block text-center">&larr; Kembali ke Daftar
             Jasa</a>
-
         <h2 class="mb-4 text-center">Pesan Paket: <span class="text-light"><?php echo $jasa['nama_jasa']; ?></span></h2>
-
         <div class="card bg-dark border-secondary shadow">
             <div class="card-body p-4">
                 <form method="POST">
@@ -60,6 +68,11 @@ if (isset($_POST['pesan'])) {
                         <input type="number" name="no_telp" class="form-control bg-dark text-light border-secondary"
                             placeholder="Contoh: 081234567890" required>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small">Tanggal Pengerjaan</label>
+                        <input type="date" name="tgl_pengerjaan"
+                            class="form-control bg-dark text-light border-secondary" required>
+                    </div>
                     <div class="mb-4 text-center mt-4">
                         <p class="mb-1 text-secondary">Total Harga:</p>
                         <h3 class="text-light fw-bold">Rp <?php echo number_format($jasa['harga']); ?></h3>
@@ -70,7 +83,6 @@ if (isset($_POST['pesan'])) {
             </div>
         </div>
     </div>
-
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 

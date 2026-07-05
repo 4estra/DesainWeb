@@ -48,66 +48,63 @@ if (isset($_POST['submit'])) {
         </ul>
     </div>
 
-    <div class="container py-5 mx-auto" style="max-width: 800px;">
-        <h2 class="text-center mb-5 fw-light">Client Reviews</h2>
+    <div class="container py-5 mx-auto px-3" style="max-width: 650px;">
+        <div class="card-body p-4">
+            <form method="POST" action="">
+                <!-- Hapus row g-3 kalau bikin berantakan, kita pakai stack biasa -->
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Nama Kamu</label>
+                    <input type="text" name="nama" class="form-control bg-dark text-light border-secondary"
+                        placeholder="Tulis namamu..." required>
+                </div>
 
-        <div class="card bg-dark border-secondary shadow mb-5">
-            <div class="card-body p-4">
-                <form method="POST" action="">
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-7">
-                            <label class="text-secondary mb-1 small">Nama Kamu</label>
-                            <input type="text" name="nama" class="form-control bg-dark text-light border-secondary"
-                                placeholder="Tulis namamu..." required>
-                        </div>
-                        <div class="col-md-5">
-                            <label class="text-secondary mb-1 small">Penilaian</label>
-                            <select name="rating" class="form-select bg-dark text-light border-secondary">
-                                <option value="5">5 Bintang (Sangat Puas)</option>
-                                <option value="4">4 Bintang (Puas)</option>
-                                <option value="3">3 Bintang (Cukup)</option>
-                                <option value="2">2 Bintang (Kurang)</option>
-                                <option value="1">1 Bintang (Kecewa)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <label class="text-secondary mb-1 small">Pengalaman Kamu</label>
-                        <textarea name="isi" class="form-control bg-dark text-light border-secondary"
-                            placeholder="Ceritain dong gimana hasil foto dan pelayanan kami..." required
-                            style="height: 100px;"></textarea>
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-light w-100 fw-bold">Kirim Review</button>
-                </form>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Penilaian</label>
+                    <select name="rating" class="form-select bg-dark text-light border-secondary">
+                        <option value="5">5 Bintang (Sangat Puas)</option>
+                        <option value="4">4 Bintang (Puas)</option>
+                        <option value="3">3 Bintang (Cukup)</option>
+                        <option value="2">2 Bintang (Kurang)</option>
+                        <option value="1">1 Bintang (Kecewa)</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-secondary small">Pengalaman Kamu</label>
+                    <textarea name="isi" class="form-control bg-dark text-light border-secondary"
+                        placeholder="Ceritain dong..." required style="min-height: 100px;"></textarea>
+                </div>
+
+                <button type="submit" name="submit" class="btn btn-light w-100 fw-bold">Kirim Review</button>
+            </form>
         </div>
+    </div>
 
-        <div class="row g-4">
-            <?php
-            $query = mysqli_query($conn, "SELECT * FROM reviews ORDER BY id DESC");
-
-            if (mysqli_num_rows($query) > 0) {
-                while ($row = mysqli_fetch_assoc($query)) {
-                    $bintang = str_repeat('★', $row['rating']);
-                    echo '
-                    <div class="col-12">
-                        <div class="card bg-dark border-secondary shadow-sm">
-                            <div class="card-body p-4">
+    <div class="row g-4 d-flex justify-content-center align-items-center">
+        <?php
+        $query = mysqli_query($conn, "SELECT * FROM reviews ORDER BY id DESC");
+        if (mysqli_num_rows($query) > 0) {
+            while ($row = mysqli_fetch_assoc($query)) {
+                $bintang = str_repeat('★', $row['rating']);
+                echo '
+                    <div class="col-6 ">
+                        <div class="card bg-dark border-secondary shadow-sm ">
+                            <div class="card-body p-2 ">
                                 <h5 class="text-warning mb-3">' . $bintang . '</h5>
                                 <p class="card-text text-light">"' . $row['isi'] . '"</p>
                                 <small class="text-secondary">— ' . $row['nama'] . '</small>
                             </div>
                         </div>
                     </div>';
-                }
-            } else {
-                echo '
+            }
+        } else {
+            echo '
                 <div class="col-12 text-center py-5">
                     <p class="text-secondary">Belum ada review. Jadilah yang pertama memberikan ulasan untuk kami!</p>
                 </div>';
-            }
-            ?>
-        </div>
+        }
+        ?>
+    </div>
     </div>
 
     <script src="./js/bootstrap.bundle.min.js"></script>
