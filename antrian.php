@@ -10,15 +10,15 @@ include 'koneksi.php';
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-    body {
-        background-color: #000;
-        color: #fff;
-    }
+        body {
+            background-color: #000;
+            color: #fff;
+        }
 
-    .antrian-container {
-        max-width: 900px;
-        margin: 50px auto;
-    }
+        .antrian-container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
     </style>
 </head>
 
@@ -69,18 +69,18 @@ include 'koneksi.php';
                         $query = mysqli_query($conn, "SELECT * FROM pesanan ORDER BY id ASC");
                         while ($row = mysqli_fetch_assoc($query)) {
                             ?>
-                        <tr>
-                            <td>#<?= $row['id']; ?></td>
-                            <td><?= $row['nama_customer']; ?></td>
-                            <td><?= $row['paket']; ?></td>
-                            <td><?= $row['tgl_pengerjaan']; ?></td>
-                            <td>
-                                <span
-                                    class="badge <?= ($row['status'] == 'Selesai' ? 'bg-success' : 'bg-warning text-dark') ?>">
-                                    <?= $row['status']; ?>
-                                </span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>#<?= $row['id']; ?></td>
+                                <td><?= $row['nama_customer']; ?></td>
+                                <td><?= $row['paket']; ?></td>
+                                <td><?= $row['tgl_pengerjaan']; ?></td>
+                                <td>
+                                    <span
+                                        class="badge <?= ($row['status'] == 'Selesai' ? 'bg-success' : 'bg-warning text-dark') ?>">
+                                        <?= $row['status']; ?>
+                                    </span>
+                                </td>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>
